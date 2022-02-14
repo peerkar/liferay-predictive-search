@@ -1,20 +1,9 @@
 components:
     schemas:
-        Attribute:
-            properties:
-                key:
-                    type: string
-                value:
-                    type: string
-            type: object
         Suggestion:
             description:
                 Suggestion
             properties:
-                attributes:
-                    items:
-                        $ref: "#/components/schemas/Attribute"
-                    type: array
                 text:
                     type: string
             type: object

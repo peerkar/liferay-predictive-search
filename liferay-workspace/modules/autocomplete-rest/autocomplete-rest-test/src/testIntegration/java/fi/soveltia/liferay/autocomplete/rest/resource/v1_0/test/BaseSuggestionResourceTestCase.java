@@ -279,14 +279,6 @@ public abstract class BaseSuggestionResourceTestCase {
 		for (String additionalAssertFieldName :
 				getAdditionalAssertFieldNames()) {
 
-			if (Objects.equals("attributes", additionalAssertFieldName)) {
-				if (suggestion.getAttributes() == null) {
-					valid = false;
-				}
-
-				continue;
-			}
-
 			if (Objects.equals("text", additionalAssertFieldName)) {
 				if (suggestion.getText() == null) {
 					valid = false;
@@ -411,17 +403,6 @@ public abstract class BaseSuggestionResourceTestCase {
 
 		for (String additionalAssertFieldName :
 				getAdditionalAssertFieldNames()) {
-
-			if (Objects.equals("attributes", additionalAssertFieldName)) {
-				if (!Objects.deepEquals(
-						suggestion1.getAttributes(),
-						suggestion2.getAttributes())) {
-
-					return false;
-				}
-
-				continue;
-			}
 
 			if (Objects.equals("text", additionalAssertFieldName)) {
 				if (!Objects.deepEquals(
@@ -558,11 +539,6 @@ public abstract class BaseSuggestionResourceTestCase {
 		sb.append(" ");
 		sb.append(operator);
 		sb.append(" ");
-
-		if (entityFieldName.equals("attributes")) {
-			throw new IllegalArgumentException(
-				"Invalid entity field " + entityFieldName);
-		}
 
 		if (entityFieldName.equals("text")) {
 			sb.append("'");

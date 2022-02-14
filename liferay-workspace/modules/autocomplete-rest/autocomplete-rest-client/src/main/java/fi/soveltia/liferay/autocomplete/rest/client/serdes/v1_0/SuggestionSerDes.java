@@ -1,6 +1,5 @@
 package fi.soveltia.liferay.autocomplete.rest.client.serdes.v1_0;
 
-import fi.soveltia.liferay.autocomplete.rest.client.dto.v1_0.Attribute;
 import fi.soveltia.liferay.autocomplete.rest.client.dto.v1_0.Suggestion;
 import fi.soveltia.liferay.autocomplete.rest.client.json.BaseJSONParser;
 
@@ -9,7 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.stream.Stream;
 
 import javax.annotation.Generated;
 
@@ -40,26 +38,6 @@ public class SuggestionSerDes {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("{");
-
-		if (suggestion.getAttributes() != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"attributes\": ");
-
-			sb.append("[");
-
-			for (int i = 0; i < suggestion.getAttributes().length; i++) {
-				sb.append(String.valueOf(suggestion.getAttributes()[i]));
-
-				if ((i + 1) < suggestion.getAttributes().length) {
-					sb.append(", ");
-				}
-			}
-
-			sb.append("]");
-		}
 
 		if (suggestion.getText() != null) {
 			if (sb.length() > 1) {
@@ -93,13 +71,6 @@ public class SuggestionSerDes {
 
 		Map<String, String> map = new TreeMap<>();
 
-		if (suggestion.getAttributes() == null) {
-			map.put("attributes", null);
-		}
-		else {
-			map.put("attributes", String.valueOf(suggestion.getAttributes()));
-		}
-
 		if (suggestion.getText() == null) {
 			map.put("text", null);
 		}
@@ -128,19 +99,7 @@ public class SuggestionSerDes {
 			Suggestion suggestion, String jsonParserFieldName,
 			Object jsonParserFieldValue) {
 
-			if (Objects.equals(jsonParserFieldName, "attributes")) {
-				if (jsonParserFieldValue != null) {
-					suggestion.setAttributes(
-						Stream.of(
-							toStrings((Object[])jsonParserFieldValue)
-						).map(
-							object -> AttributeSerDes.toDTO((String)object)
-						).toArray(
-							size -> new Attribute[size]
-						));
-				}
-			}
-			else if (Objects.equals(jsonParserFieldName, "text")) {
+			if (Objects.equals(jsonParserFieldName, "text")) {
 				if (jsonParserFieldValue != null) {
 					suggestion.setText((String)jsonParserFieldValue);
 				}

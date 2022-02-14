@@ -21,8 +21,6 @@ import java.util.Set;
 
 import javax.annotation.Generated;
 
-import javax.validation.Valid;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -42,35 +40,6 @@ public class Suggestion implements Serializable {
 	public static Suggestion unsafeToDTO(String json) {
 		return ObjectMapperUtil.unsafeReadValue(Suggestion.class, json);
 	}
-
-	@Schema
-	@Valid
-	public Attribute[] getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(Attribute[] attributes) {
-		this.attributes = attributes;
-	}
-
-	@JsonIgnore
-	public void setAttributes(
-		UnsafeSupplier<Attribute[], Exception> attributesUnsafeSupplier) {
-
-		try {
-			attributes = attributesUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Attribute[] attributes;
 
 	@Schema
 	public String getText() {
@@ -124,26 +93,6 @@ public class Suggestion implements Serializable {
 		StringBundler sb = new StringBundler();
 
 		sb.append("{");
-
-		if (attributes != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"attributes\": ");
-
-			sb.append("[");
-
-			for (int i = 0; i < attributes.length; i++) {
-				sb.append(String.valueOf(attributes[i]));
-
-				if ((i + 1) < attributes.length) {
-					sb.append(", ");
-				}
-			}
-
-			sb.append("]");
-		}
 
 		if (text != null) {
 			if (sb.length() > 1) {
