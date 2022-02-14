@@ -1,0 +1,3 @@
+Bundle-Name: autocomplete-rest-impl
+Bundle-SymbolicName: fi.soveltia.liferay.autocomplete.rest.impl
+Bundle-Version: 1.0.0

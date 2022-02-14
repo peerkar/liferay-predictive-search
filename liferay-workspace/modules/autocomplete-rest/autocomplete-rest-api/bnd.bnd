@@ -1,0 +1,6 @@
+Bundle-Name: autocomplete-rest-api
+Bundle-SymbolicName: fi.soveltia.liferay.autocomplete.rest.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	fi.soveltia.liferay.autocomplete.rest.dto.v1_0,\
+	fi.soveltia.liferay.autocomplete.rest.resource.v1_0

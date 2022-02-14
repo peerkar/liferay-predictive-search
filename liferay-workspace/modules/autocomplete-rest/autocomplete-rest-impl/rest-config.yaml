@@ -1,0 +1,9 @@
+apiDir: "../autocomplete-rest-api/src/main/java"
+apiPackagePath: "fi.soveltia.liferay.autocomplete.rest"
+application:
+    baseURI: "/autocomplete-rest"
+    className: "AutocompleteRestApplication"
+    name: "AutocompleteRest"
+author: "liferay"
+clientDir: "../autocomplete-rest-client/src/main/java"
+testDir: "../autocomplete-rest-test/src/testIntegration/java"

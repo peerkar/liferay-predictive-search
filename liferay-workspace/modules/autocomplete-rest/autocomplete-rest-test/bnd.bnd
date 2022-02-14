@@ -1,0 +1,4 @@
+Bundle-Name: autocomplete-rest-test
+Bundle-SymbolicName: fi.soveltia.liferay.autocomplete.rest.test
+Bundle-Version: 1.0.0
+-includeresource: fi.soveltia.liferay.autocomplete.rest.client.jar=../autocomplete-rest-client/build/libs/fi.soveltia.liferay.autocomplete.rest.client-1.0.0.jar;lib:=true

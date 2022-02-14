@@ -1,0 +1,7 @@
+dependencies {
+	compile project(":modules:autocomplete-rest:autocomplete-rest-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+group = "fi.soveltia.liferay.autocomplete.rest"

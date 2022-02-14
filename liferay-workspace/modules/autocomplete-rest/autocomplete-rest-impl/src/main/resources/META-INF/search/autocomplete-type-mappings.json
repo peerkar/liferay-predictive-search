@@ -1,0 +1,9 @@
+{
+	"properties": {
+		"keywordSearch_en_US": {
+			"analyzer": "english",
+			"store": true,
+			"type": "search_as_you_type"
+		}
+	}
+}
