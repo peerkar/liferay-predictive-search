@@ -1,5 +1,5 @@
-# Liferay Autocomplete
+# Liferay Predictive Search Demonstration
 
-Source code for my blog at https://liferay.dev/web/guest/blogs/-/blogs/implement-predictive-search-in-liferay
+Source codes for my blog at https://liferay.dev/web/guest/blogs/-/blogs/implement-predictive-search-in-liferay
 
  
