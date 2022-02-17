@@ -6,7 +6,7 @@ String keywords = (String)request.getAttribute("keywords");
 String keywordsParameterName = (String)request.getAttribute("keywordsParameterName");
 %>
 
-<portlet:resourceURL id="get_suggestions" var="resourceURL" />
+<portlet:resourceURL id="/predictive_search/get_suggestions" var="resourceURL" />
 
 <aui:fieldset cssClass="search-bar">
 	<div class="input-group search-bar-simple">
