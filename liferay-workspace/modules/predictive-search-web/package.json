@@ -1,0 +1,17 @@
+{
+	"dependencies": {
+		"devbridge-autocomplete": "^1.4.11",
+		"jquery": "^3.6.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"liferay-npm-bundler": "2.18.2"
+	},
+	"main": "lib/index.es.js",
+	"name": "predictive-search-web",
+	"scripts": {
+		"build": "babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+	},
+	"version": "1.0.0"
+}

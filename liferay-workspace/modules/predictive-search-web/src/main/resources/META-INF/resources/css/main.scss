@@ -1,0 +1,29 @@
+.autocomplete-suggestions { 
+	background: #fff; 
+	border: none;
+	box-shadow: 0 1px 10px -1px rgba(109, 109, 109, 0.3);
+	max-height: none!important;
+	overflow: auto; 
+	padding: 25px;
+}
+
+.autocomplete-group { 
+	font-weight: 700;
+	padding: 0px 0 10px 0;
+}
+
+.autocomplete-suggestion { 
+	margin: 0 0 5px 0;
+	padding: 5px;
+	white-space: normal;
+}
+
+.autocomplete-suggestion .title {
+	overflow-x: hidden;
+	text-overflow: ellipsis;			
+	white-space: nowrap;
+}
+
+.autocomplete-selected {
+	background: #F0F0F0; 
+}
