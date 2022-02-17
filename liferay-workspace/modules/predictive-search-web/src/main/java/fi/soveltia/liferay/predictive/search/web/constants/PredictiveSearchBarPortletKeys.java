@@ -1,7 +1,7 @@
 package fi.soveltia.liferay.predictive.search.web.constants;
 
 /**
- * @author liferay
+ * @author Petteri Karttunen
  */
 public class PredictiveSearchBarPortletKeys {
 

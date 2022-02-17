@@ -6,10 +6,7 @@ import com.liferay.portal.search.web.portlet.shared.search.PortletSharedSearchRe
 import com.liferay.portal.search.web.portlet.shared.search.PortletSharedSearchResponse;
 import com.liferay.portal.search.web.search.request.SearchSettings;
 
-import fi.soveltia.liferay.predictive.search.web.constants.PredictiveSearchBarPortletKeys;
-
 import java.io.IOException;
-
 import java.util.Optional;
 
 import javax.portlet.Portlet;
@@ -20,8 +17,10 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import fi.soveltia.liferay.predictive.search.web.constants.PredictiveSearchBarPortletKeys;
+
 /**
- * @author liferay
+ * @author Petteri Karttunen
  */
 @Component(
 	immediate = true,
@@ -40,6 +39,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class PredictiveSearchBarPortlet extends MVCPortlet {
 
+	@Override
 	public void render(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
