@@ -37,32 +37,32 @@
 	<#assign inputFieldId = namespace + stringUtil.randomId() />
 
 	<div class="input-group search-bar-simple">
-			<div class="input-group-item search-bar-keywords-input-wrapper">
-				<input
-          autofocus
-          autocomplete="off"
-					class="form-control input-group-inset input-group-inset-after search-bar-keywords-input"
-					data-qa-id="searchInput"
-					id="${inputFieldId}"
-					name="${htmlUtil.escape(searchBarPortletDisplayContext.getKeywordsParameterName())}"
-					placeholder="${searchBarPortletDisplayContext.getInputPlaceholder()}"
-					title="${languageUtil.get(locale, "search")}"
-					type="text"
-					value="${htmlUtil.escape(searchBarPortletDisplayContext.getKeywords())}"
-				/>
+		<div class="input-group-item search-bar-keywords-input-wrapper">
+			<input
+				autofocus
+				autocomplete="off"
+				class="form-control input-group-inset input-group-inset-after search-bar-keywords-input"
+				data-qa-id="searchInput"
+				id="${inputFieldId}"
+				name="${htmlUtil.escape(searchBarPortletDisplayContext.getKeywordsParameterName())}"
+				placeholder="${searchBarPortletDisplayContext.getInputPlaceholder()}"
+				title="${languageUtil.get(locale, "search")}"
+				type="text"
+				value="${htmlUtil.escape(searchBarPortletDisplayContext.getKeywords())}"
+			/>
 
-				<div class="input-group-inset-item input-group-inset-item-after">
-					<button aria-label="${languageUtil.get(locale, "submit")}" class="btn btn-unstyled" type="submit">
-						<@clay.icon symbol="search" />
-					</button>
-				</div>
-
-				<@liferay_aui.input
-					name=htmlUtil.escape(searchBarPortletDisplayContext.getScopeParameterName())
-					type="hidden"
-					value=searchBarPortletDisplayContext.getScopeParameterValue()
-				/>
+			<div class="input-group-inset-item input-group-inset-item-after">
+				<button aria-label="${languageUtil.get(locale, "submit")}" class="btn btn-unstyled" type="submit">
+					<@clay.icon symbol="search" />
+				</button>
 			</div>
+
+			<@liferay_aui.input
+				name=htmlUtil.escape(searchBarPortletDisplayContext.getScopeParameterName())
+				type="hidden"
+				value=searchBarPortletDisplayContext.getScopeParameterValue()
+			/>
+		</div>
 	</div>
 </@>
 
@@ -76,30 +76,31 @@
 	
 		const containerInstance = 'autocomplete-suggestions-${stringUtil.randomId()}';
 
-    const inputElement = $('#${inputFieldId}');
+		const inputElement = $('#${inputFieldId}');
 
-		function getAttribute(item, name) {
-		
-			let obj = item.attributes?.find(o => o.key === name);
-			
-			if (obj == null) {
-				return '';
-			}
-			
-			return obj.value;
+		function doSearch(keywords) {
+			window.location.href = getCurrentBaseURL() + "?q=" + encodeURIComponent(keywords);
 		}
+
+		function getCurrentBaseURL() {
+			let currentURL = window.location.href;
+
+			if (currentURL.indexOf('?') > 0) {
+				return currentURL.split('?')[0];
+			}
+			return currentURL;
+		}	
 
 		function initAutocomplete() {
 			$(inputElement).devbridgeAutocomplete({
 				containerClass: 'autocomplete-suggestions hide ' + containerInstance,
 				dataType: 'json',
 				deferRequestBy: 50,
-				formatResult: function(suggestion, currentValue) {
+				formatResult: function (suggestion, currentValue) {
 					return suggestion.value;
 				},
-				groupBy: 'type',
-				onSelect: function(suggestion) {
-					location.href = suggestion.data.url;
+				onSelect: function (suggestion) {
+					doSearch(suggestion.data.text);
 				},
 				paramName: 'keywords',
 				preserveInput: true,
@@ -118,16 +119,14 @@
 						return {
 							suggestions: function() {
 								return $.map(response.suggestions, function(item) {
-									let url = getAttribute(item, 'url');
 									return {
-										value: '<div title="' + item.text + '" class="title"><a href="' + url + '">' + item.text + '</a></div>', 
+										value: '<div title="' + item.text + '" class="title">' + item.text + '</div>', 
 										data: {
-											type: getAttribute(item, 'type'),
-											url: url
+											text: item.text
 										}
 									};
 								});
-							}().sort(sortByType)
+							}()
 						};
 					}
 				},
@@ -142,11 +141,7 @@
 			});
 		}
 
-		function sortByType (A, B) {
-			return ((A.type == B.type) ? 0 : ((A.type > B.type) ? 1 : -1 ));
-		}
-		
-	  initAutocomplete();
+		initAutocomplete();
 	   	
 		initListeners();
 	});
